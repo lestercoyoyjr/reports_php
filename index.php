@@ -2,7 +2,10 @@
     require 'template.php';
     require 'conexion.php';
 
-    $sql = "SELECT id,nombre,telefono,fecha_nacimiento,estado_civil FROM empleados WHERE activo=1";
+    // report
+    $status = $_POST["status"];
+
+    $sql = "SELECT id,nombre,telefono,fecha_nacimiento,estado_civil FROM empleados WHERE activo=$status";
     $resultado = $mysqli->query($sql);
 
     $pdf = new PDF("P","mm","LETTER");
@@ -25,7 +28,7 @@
     $pdf->SetFont("Arial","",12);
     $pdf->SetFillColor(150,170,70);
     $pdf->SetTextColor(25,0,0);
-    $pdf->SetDrawColor(170,179,35);
+    // $pdf->SetDrawColor(170,179,35);
     
     while ($row = $resultado->fetch_assoc()) {
         $pdf->Cell(50,5,$row["nombre"],1,0,"L");
