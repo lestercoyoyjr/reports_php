@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect("localhost", "root", "", "empresa");
+$mysqli = new mysqli("localhost", "root", "", "empresa");
 
 /* comprobar la conexión */
 if (mysqli_connect_errno()) {
